@@ -4,11 +4,10 @@ const iPhonex = devices['iPhone X'];
 puppeteer.launch({headless:false}).then(async browser => {
   const page = await browser.newPage();
   
-  //We use here page.emulate so no more need to set the viewport separately
-  //await page.setViewport({ width: 1280, height: 800 })
   await page.emulate(iPhonex);
-  await page.goto('https://www.homedepot.com/');
-  await page.screenshot({ path: '../out/homedepot-iphoneX.png'});
+  
+  await page.goto('https://msdn.com/');
+  await page.screenshot({ path: 'msdn.png'});
 
   await browser.close();
 });

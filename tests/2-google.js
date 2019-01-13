@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({headless:false});
   const page = await browser.newPage();
   await page.setViewport({ width: 1680, height: 1050 })
   await page.goto('https://www.google.com', {waitUntil: 'networkidle2'});
@@ -16,7 +16,6 @@ const puppeteer = require('puppeteer');
   ]);
 
   await page.screenshot({path: 'meeseek.png'});
-  await page.pdf({path: 'meeseek.pdf'});
 
   await browser.close();
 })();
